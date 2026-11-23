@@ -1,12 +1,37 @@
 % !TeX root = ../final-report.tex
 % TODO(team): Keep the AI disclosure aligned with actual tool use and verification.
 \section{AI Tool Use}
-We used ChatGPT/Codex to assist with implementation and debugging,
-experiment scripts and analysis, literature discovery, and English and
-LaTeX editing. AI assisted in drafting the abstract and Sections~4--6.
-The authors manually revised and checked Section~4 and the E1--E3
-results in Section~5. Verification used code inspection, automated tests, actual
-process runs, and archived traces; reported measurements were not generated
-by a language model. References and numerical claims were checked against
-source documents and experimental records. The authors remain responsible
-for the submitted code, interpretation, and report.
+We used ChatGPT/Codex throughout development and report preparation.
+Its roles included proposing implementation changes, explaining failures,
+drafting tests and experiment scripts, suggesting analysis and literature
+search directions, and editing English and LaTeX. AI also assisted in
+drafting the abstract and Sections~4--6. The authors manually revised and
+checked Section~4 and the main-study E1--E3 results in Section~5.
+
+\paragraph{Implementation and testing.}
+AI assistance covered storage and repair logic, Controller and playback
+integration, and the management console. Proposed changes were checked
+against the implementation and exercised through builds, static checks,
+race tests, and targeted system tests. The archived checks include
+publication, integrity, repair, cleanup, deletion, and media validation.
+These executable checks, rather than a model's description of intended
+behavior, provided the implementation evidence used in the report.
+
+\paragraph{Experiments and analysis.}
+AI helped construct fault schedules, instrumentation, aggregation scripts,
+and result tables. Numerical results came from actual processes and HTTP
+transfers, not language-model-generated measurements. Verification used
+recorded injections, session events, traffic counters, task histories,
+and hash-valid committed replica checks. Exploratory runs, independent
+validation, and completion-gated controls remain distinct. Measurement
+anomalies and replacement runs are documented; application failures remain
+in the reported denominators. This distinction is particularly important
+when a plausible explanation differs from what a trace actually records.
+
+\paragraph{Writing and responsibility.}
+AI supplied literature leads, wording, figure and table formatting, and
+LaTeX debugging assistance. Bibliographic details and paper-specific claims
+were checked against source documents, while quantitative statements were
+traced to experimental records. Repository history and retained artifacts
+support review of these changes. The authors remain responsible for the
+submitted code, references, analysis, and final interpretation.

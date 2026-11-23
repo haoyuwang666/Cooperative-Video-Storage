@@ -24,6 +24,19 @@ Across arrival patterns, L showed no consistent advantage in playback
 and recovery. The Controller trials also showed that a new leader could
 resume a committed task after a crash and register the replacement copy.
 
+\paragraph{Operational interpretation.}
+The late-arrival extension and E4 distinguish session completion from
+replacement readiness. A viewer may finish using an original surviving
+holder even after repair has completed, so completion alone does not show
+that the replacement can serve. Conversely, E4 removes both original
+holders and directly checks the replacement. For a planned second stop,
+the tested completion-gated procedure checks both live, hash-valid copies
+and committed registrations before proceeding. A fixed waiting period
+cannot substitute for this readiness check. Together with E5's fresh
+application requests, these experiments motivate verifying recovery
+through the operation that must remain available, rather than a process
+health flag or a completed session alone.
+
 \paragraph{Limitations.}
 Each failed upload capacity in E1--E3 corresponds to a different Peer
 and a single paired context. The comparisons therefore include both

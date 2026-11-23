@@ -109,8 +109,9 @@ Across the 3 failure contexts, mean stall under L was 0.55\,s lower
 than under F50 with simultaneous arrivals and 0.01\,s higher with
 staggered arrivals. With staggered arrivals, L met the recovery target
 in 1/3 runs and F50 in 2/3. 
-There's no clear winner between L and F50, but both outperformed F25 in
-stall and recovery. 
+There is no clear winner between L and F50 across both objectives.
+F25 also does not dominate: its simultaneous-arrival stall is lower than
+F50's, but its staggered-arrival recovery-target count is lower.
 
 \begin{table}[ht]
 \centering\small
@@ -137,6 +138,44 @@ In this case, L reduced mean post-fault stall by
 1.65\,s per viewer relative to F50, but full replica recovery was first
 verified 2.07\,s later. Viewers spent less time waiting for segments,
 while one-copy exposure rose from 18.82 to 20.38\,MiB$\cdot$s.
+
+\paragraph{Wider-spaced arrivals.}
+The late-staggered extension tests whether the comparison changes when
+new viewers arrive during and after repair. Table~\ref{tab:e3-late}
+summarizes the separate 12-run batch. All 72 sessions completed, and every
+run met the 40\,s recovery target. S and F50 had zero mean observed
+post-fault stall at the reported precision; F25 and L each had 0.02\,s.
+Mean repair payload was 0.750\,MiB per run for each policy. S and F50 had lower observed
+one-copy exposure than F25 and L in this workload.
+
+\begin{table}[ht]
+\centering\small
+\caption{Independent late-staggered extension: three failure contexts per
+policy. Recovery range is seconds after failure; exposure is mean MiB$\cdot$s.}
+\label{tab:e3-late}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Policy & Completed & Stall (s) & Recovery range & Exposure \\
+\midrule
+S   & 18/18 & 0.00 & 29.45--31.43 & 14.99 \\
+F25 & 18/18 & 0.02 & 31.55--37.48 & 17.63 \\
+F50 & 18/18 & 0.00 & 29.45--31.47 & 15.48 \\
+L   & 18/18 & 0.02 & 31.53--35.55 & 16.87 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 20\,s cohort arrived before full recovery had been observed in all
+12 runs, yet all of its sessions completed. The 50\,s cohort arrived after
+verified recovery in every run: all 24 late sessions completed without
+stall. This confirms that the workload spans both restoration phases.
+However, no verified delivery of an affected segment from a replacement
+Peer was recorded. The surviving original holders and fixed round-robin
+selection were sufficient for these requests. With no OFF arm, completion
+cannot be attributed to repair. Wider arrival spacing also reduces
+overlap, so comparison with the earlier 0/4/12\,s batch is descriptive,
+not a matched causal estimate. E4 directly tests replacement delivery
+after removing both original holders.
 
 \subsection{E4: Segment availability after a second holder failure}
 We select a segment late in the repair queue and stop its original

@@ -18,6 +18,12 @@ Low demand consists of 2 viewers, while high demand consists of 6 viewers.
 Under high demand, arrivals follow 2 patterns.
 With simultaneous arrivals, all 6 viewers start near 0\,s. 
 With staggered arrivals, viewers start in pairs near 0, 4, and 12\,s. 
+An independent late-staggered extension places the three pairs at
+0/0.2, 20/20.2, and 50/50.2\,s, extending observation to 100\,s while
+retaining the 42\,s session timeout. It covers arrivals during repair and
+after restoration. S, F25, F50, and L each use the three failure contexts,
+giving 12 valid runs and 72 scheduled sessions. Its results are reported
+separately from the main study.
 
 \begin{table}[ht]
 \centering\small
@@ -87,4 +93,15 @@ The sampled exposure is
 where the intervals span the period from the first failure
 to the observation horizon.
 Exposure is reported in MiB$\cdot$s.
+
+\paragraph{Evidence and measurement checks.}
+The study tools retain configurations, source and binary provenance,
+failure journals, per-session events, task state, and replica observations.
+Fresh stores and processes isolate runs; the host page cache is not flushed.
+For the late-staggered extension, checks verify six distinct sessions,
+arrival times, monotonic observation timestamps, and coverage through the
+observation horizon. One run with inconsistent timing and incomplete
+records was retained but marked measurement-invalid and replaced using
+the same configuration and binaries. This was a measurement exclusion,
+not removal of an unsuccessful playback outcome.
 
