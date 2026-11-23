@@ -1,5 +1,25 @@
 % !TeX root = ../final-report.tex
-% TODO(team): Summarize the problem, prototype, measured findings, and limitations after the main text is complete.
+% TODO(team): Keep abstract claims aligned with the reported experiments.
 \begin{abstract}
-Summarize the problem, prototype, measured findings, and limitations after the main text is complete.
+We designed and implemented a cooperative video storage system that
+streams replicated segments to browser clients. Storage Peers verify
+and serve segment data, while a Raft-replicated Controller service
+publishes a video once it confirms 2 copies of every segment on distinct
+Peers. The Controllers record repair tasks so that a new leader can
+resume unfinished work. After a Peer fails, surviving holders share their
+upload bandwidth between viewers and replica repair. We study how repair
+timing and bandwidth limits affect playback and replica recovery.
+In paired experiments on a single host, viewers download segments
+over HTTP and consume them on a simulated media clock.
+
+Under high demand, enabling shared repair increased mean post-fault stall
+by 1.22\,s per viewer, while 7 of 18 sessions completed with or without
+repair. Extending the repair grace period from 1 to 8\,s avoided copying
+during 4\,s outages. During persistent outages, the same change increased
+one-copy exposure by 16\%. A load-aware repair cap reduced stalls in one
+failure context but showed no consistent advantage over a fixed 50\% cap
+across arrival patterns. Once repair was verified, the remaining Peer
+served all 9 segments in all 6 trials in which both original holders
+stopped. These results show how repair can preserve access after a second
+failure at a measurable cost to viewers sharing the surviving sources.
 \end{abstract}

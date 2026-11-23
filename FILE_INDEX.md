@@ -11,6 +11,7 @@ TODO(Haoyu)：新增文件后运行 python3 scripts/check_scaffold.py --write-in
 | [.gitattributes](.gitattributes) | # TODO(Yuquan): Keep executable Linux scripts portable across Windows checkouts. |
 | [.github/workflows/ci.yml](.github/workflows/ci.yml) | # TODO(Haoyu): Maintain repository-root build and verification checks. |
 | [.gitignore](.gitignore) | # TODO(Haoyu): Keep generated data, local dependencies, binaries and credentials out of version control. |
+| [.vscode/settings.json](.vscode/settings.json) | // TODO(team): Keep LaTeX Workshop outputs consistent with the Beamer Makefile. |
 | [Makefile](Makefile) | # TODO(Haoyu): Maintain these shared entry points; commands run from the repository root. |
 | [README.md](README.md) | TODO(Haoyu)：维护项目入口、构建约定和功能状态；每个负责人完成任务时同步相关文档。 |
 | [cmd/client/main.go](cmd/client/main.go) | // TODO(Tian): Extend CLI configuration alongside the shared Go engine; never implement a separate CLI scheduler. |
@@ -37,17 +38,17 @@ TODO(Haoyu)：新增文件后运行 python3 scripts/check_scaffold.py --write-in
 | [docs/final-report/README.md](docs/final-report/README.md) | TODO(team): Complete and review the eight-page English report according to PLAN.md before submission. |
 | [docs/final-report/assets/README.md](docs/final-report/assets/README.md) | TODO(team): Add evaluation figures with source data, generation commands, and units documented. |
 | [docs/final-report/assets/architecture.tex](docs/final-report/assets/architecture.tex) | % TODO(team): Keep the architecture diagram aligned with implemented control and data paths. |
-| [docs/final-report/final-report.tex](docs/final-report/final-report.tex) | % TODO(team): Complete the remaining sections and review the eight-page report. |
+| [docs/final-report/final-report.tex](docs/final-report/final-report.tex) | % TODO(team): Maintain the USENIX report entry point and section order. |
 | [docs/final-report/references.bib](docs/final-report/references.bib) | % TODO(team): Maintain verified bibliographic metadata and source-to-claim notes as the report evolves. |
-| [docs/final-report/sections/00-abstract.tex](docs/final-report/sections/00-abstract.tex) | % TODO(team): Summarize the problem, prototype, measured findings, and limitations after the main text is complete. |
+| [docs/final-report/sections/00-abstract.tex](docs/final-report/sections/00-abstract.tex) | % TODO(team): Keep abstract claims aligned with the reported experiments. |
 | [docs/final-report/sections/01-introduction.tex](docs/final-report/sections/01-introduction.tex) | % TODO(team): Keep the introduction's scope and contributions aligned with the final evidence. |
 | [docs/final-report/sections/02-background-related-work.tex](docs/final-report/sections/02-background-related-work.tex) | % TODO(team): Maintain verified prior-work comparisons and citations as the report evolves. |
 | [docs/final-report/sections/03-design-implementation.tex](docs/final-report/sections/03-design-implementation.tex) | % TODO(team): Keep design details, policy formulas, and implementation boundaries aligned with the code. |
-| [docs/final-report/sections/04-methodology.tex](docs/final-report/sections/04-methodology.tex) | % TODO(team): Define paired contexts, workloads, fault schedules, metrics, verification cadence, and the limits of simulated media consumption. |
-| [docs/final-report/sections/05-evaluation.tex](docs/final-report/sections/05-evaluation.tex) | % TODO(team): Report E1--E5, the E4 follow-up, and the late-arrival extension with traceable data and clearly separated experimental phases. |
-| [docs/final-report/sections/06-discussion-conclusion.tex](docs/final-report/sections/06-discussion-conclusion.tex) | % TODO(team): Answer each hypothesis, report negative results, discuss threats to validity, and distinguish deferred features from implemented work. |
-| [docs/final-report/sections/07-ai-use.tex](docs/final-report/sections/07-ai-use.tex) | % TODO(team): Document actual AI assistance, human verification, experimental execution, and responsibility for final claims; obtain team confirmation. |
-| [docs/final-report/sections/08-contributions.tex](docs/final-report/sections/08-contributions.tex) | % TODO(team): Replace this placeholder with detailed, individually confirmed contributions for Haoyu Wang, Yuquan Hu, and Tian Xia, supported by commits and artifacts. |
+| [docs/final-report/sections/04-methodology.tex](docs/final-report/sections/04-methodology.tex) | % TODO(team): Recheck fixture and metric definitions if the study is rerun. |
+| [docs/final-report/sections/05-evaluation.tex](docs/final-report/sections/05-evaluation.tex) | % TODO(team): Keep the tables aligned with the compact study and E4 follow-up archives. |
+| [docs/final-report/sections/06-discussion-conclusion.tex](docs/final-report/sections/06-discussion-conclusion.tex) | % TODO(team): Revisit the limits of these conclusions if deployments or workloads change. |
+| [docs/final-report/sections/07-ai-use.tex](docs/final-report/sections/07-ai-use.tex) | % TODO(team): Keep the AI disclosure aligned with actual tool use and verification. |
+| [docs/final-report/sections/08-contributions.tex](docs/final-report/sections/08-contributions.tex) | % TODO(team): Maintain these actual contributions against commits and project artifacts. |
 | [docs/final-report/usenix-2020-09.sty](docs/final-report/usenix-2020-09.sty) | TODO(team): Upstream USENIX style, preserved unchanged for the final report. |
 | [docs/invariants.md](docs/invariants.md) | TODO(Haoyu)：将新任务和删除协议的不变量补充为可执行故障测试。 |
 | [docs/ownership.md](docs/ownership.md) | TODO(Haoyu)：任务转交时同步本表；这份表记录团队约定的分工，尚非贡献完成声明。 |
