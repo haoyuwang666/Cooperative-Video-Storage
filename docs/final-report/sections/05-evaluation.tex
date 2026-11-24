@@ -42,6 +42,22 @@ respectively, under either policy. Because each failed session stops
 accumulating stall at termination, the similar stall averages under N
 and OFF include very different completion outcomes.
 
+\paragraph{Startup delay.}
+\input{assets/startup-table}
+Table~\ref{tab:e1-startup} adds the startup metric from the same archived
+E1 sessions. With two viewers, all sessions complete and mean startup is
+2.84--2.91\,s across N, OFF, and S. These wall-clock delays can be shorter
+than the four seconds of media required for startup because that setting
+specifies buffered media duration, not a mandatory four-second wait.
+At high demand, N completes all sessions with mean startup of 10.98\,s.
+OFF and S have lower conditional means, 7.32 and 7.24\,s, but each loses
+11 of 18 sessions. Their startup averages therefore describe a smaller,
+selected set of successful viewers and do not establish faster service
+for the scheduled population. Startup begins at session launch and can
+span both sides of the fault; it is distinct from post-fault stall, which
+counts waiting after media consumption begins. Reporting both metrics
+keeps initial buffering separate from interruptions during playback.
+
 \subsection{E2: Waiting before repair}
 Under shared repair, we vary how long the coordinator waits (grace period) after it
 detects a missing copy. In the brief outage, the original Peer returns
@@ -138,6 +154,16 @@ In this case, L reduced mean post-fault stall by
 1.65\,s per viewer relative to F50, but full replica recovery was first
 verified 2.07\,s later. Viewers spent less time waiting for segments,
 while one-copy exposure rose from 18.82 to 20.38\,MiB$\cdot$s.
+
+The 2.07\,s difference is between first-verification observations and is
+comparable to one nominal recovery-sampling interval. It should therefore
+be read as the observed timing contrast in this paired context, rather
+than an exact estimate of additional repair duration. The exposure
+difference is also based on sampled inventories. Neither measurement,
+nor the single context with complete sessions, establishes a reproducible
+policy ranking. A lower repair allowance can preserve source capacity for
+viewers while prolonging the time before a copy is verified; the tables
+show that compromise without establishing a universal magnitude.
 
 \paragraph{Wider-spaced arrivals.}
 The late-staggered extension tests whether the comparison changes when

@@ -35,3 +35,35 @@ binary; experimental provenance belongs in Methodology/Evaluation.
 
 Build from `docs/final-report/` with `latexmk final-report.tex` or
 `tectonic --outdir dist --keep-logs final-report.tex`.
+
+## Additive review evidence and startup table
+
+The implementation-validation addition uses
+`internal/metadata/{fsm,maintenance}_test.go`,
+`internal/storage/{reliability,traffic}_test.go`, and `tests/system/repair.py`.
+Successful archived checks are in `results/compact-study/validation/`:
+`gates.json`, `02-go-test.log`, `05-repair.log`, and `09-media.log`.
+Earlier Chromium acceptance is recorded in `docs/verification.md`, separately
+from the headless performance study.
+
+The bandwidth explanation derives from
+`results/compact-study/study-config.json`: 128 KiB / 2 s = 64 KiB/s per
+viewer; aggregate capacity is 96 + 144 + 192 = 432 KiB/s. It is a nominal
+consumption comparison, not a fitted throughput model. The timing caveat
+follows `experiments/repair_playback_study.py`, which records first verification
+and its preceding observation, keeps unrecovered runs censored, and
+distinguishes unknown from zero-copy states.
+
+Regenerate `startup-table.tex` from this report directory:
+
+```sh
+python3 assets/generate-startup-table.py
+```
+
+The script selects archived E1 N/OFF/S sessions at low/high demand, grace 3,
+persistent outage, and no second failure from
+`results/compact-study/sessions.csv`. It checks unique sessions, scheduled
+counts, and run-level completed-session means against
+`results/compact-study/summary.csv`. Displayed means pool completed sessions;
+ranges are individual-session minima and maxima, not confidence intervals.
+No new experiment was run.

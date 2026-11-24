@@ -18,3 +18,16 @@ TODO(team): Complete and review the eight-page English report according to PLAN.
 课程截止时间：**2026-11-24 11:59 AM（America/New_York）**，按用户提供的要求记录。先按八页包含参考文献、AI 使用说明与贡献分工规划；课程未明确参考文献是否豁免，确认前不自行放宽。最后一节必须为详细成员贡献。
 
 `report/` 继续存放研究说明、实验结果和素材，本目录存放最终提交文稿。原 proposal、checkpoint 和 presentation 不因创建本目录而更改。
+
+2026-11-23 review update: following the requested target of approximately
+eight pages of main content, the additive revision ends its discussion on
+page 8. The full PDF is 9 pages including references, AI disclosure, and
+contributions. This supersedes the earlier all-inclusive eight-page layout
+budget for this revision. Existing report prose was preserved; additions
+cover implementation validation, nominal bandwidth demand, startup results,
+and recovery-sampling uncertainty. Evidence and table regeneration details
+are in `assets/README.md`.
+
+The AI disclosure was subsequently shortened to fit the complete report
+within nine pages, retaining the described uses, verification, and author
+responsibility. Contributions flow continuously without a forced page break.

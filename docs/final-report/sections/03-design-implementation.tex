@@ -125,3 +125,50 @@ The prototype also provides persistent video-deletion and surplus-replica
 cleanup tasks and a local fault console. These support operation and testing;
 the study concerns minimum-two repair in a trusted network, without
 authentication or Byzantine protection.
+
+\subsection{Implementation Validation}
+The compact-study archive retains successful static checks, race-enabled
+Go tests, and system checks for ingestion, repair, cleanup, deletion, and
+media delivery. These correctness checks complement the E1--E5 trials.
+
+\paragraph{Publication and object integrity.}
+The metadata tests first attempt publication without enough replicas, then
+confirm the same holder twice. Both publication attempts remain rejected;
+only confirmation of a second distinct Peer permits publication. Repeating
+the successful operation returns its original result, and snapshot restore
+retains the published state. Storage tests interrupt an upload before its
+declared size is received and check that no partial object enters inventory.
+They also corrupt an installed blob and check that inventory excludes it
+and an equivalent PUT cannot return a successful acknowledgment for the
+corrupted bytes. Restart checks retain valid objects, while unindexed
+residual blobs consume quota without becoming advertised copies. These
+checks support distinguishing physical bytes, verified inventory, and
+committed replica registrations in the recovery metric.
+
+\paragraph{Repair interruption and acknowledgment recovery.}
+The repair system check stops a holder, waits for a committed pending task,
+and stops the Controller leader. It checks that the successor finishes the
+same task, then stops the other original holder and verifies bytes from the
+replacement by SHA-256. Further leader changes preserve the completed task.
+A separate scenario installs a valid object on the replacement without
+confirming it in metadata, modeling a lost upload response. With both
+original holders stopped, inventory reconciliation discovers and registers
+the installed copy; another leader failure retains that registration.
+FSM tests reject competing pending tasks and wrong-target receipts, retain
+pending state through snapshot restore, and accept repeated matching
+completion. These checks exercise the gap between installing bytes and
+committing a discoverable replica.
+
+\paragraph{Bandwidth and media paths.}
+HTTP-level tests transfer known payloads as repair, foreground, and probe
+traffic, checking per-class byte counts and the unchanged common rate cap.
+A separate foreground transfer checks that it cannot bypass that cap.
+Policy tests cover the two-second idle transition and the strict
+greater-than-60-second age boundary, which the main study does not activate.
+Media acceptance checks ingest four real
+H.264/AAC fragments, stop a Peer, verify gateway-delivered bytes, and decode
+both the individual fragments and the joined stream. They also check
+consistent initialization and continuous stored decode timelines. Earlier
+Chromium acceptance separately exercised the MSE path and playback controls.
+These checks establish tested delivery and decoding, without extending the
+performance results to browser QoE or physical power loss.

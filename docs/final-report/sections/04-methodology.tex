@@ -42,6 +42,29 @@ Timeouts & 8 s per attempt, 42 s per session \\
 \end{tabular}
 \end{table}
 
+\paragraph{Bandwidth demand and failure contexts.}
+The fixture consumes one 128\,KiB segment every two seconds, giving a
+nominal payload demand of 64\,KiB/s per continuously playing viewer.
+Two viewers therefore require 128\,KiB/s and six require 384\,KiB/s.
+The three configured Peer upload limits sum to 432\,KiB/s. Losing the
+96, 144, or 192\,KiB/s Peer leaves 336, 288, or 240\,KiB/s, respectively.
+All three remaining totals exceed low-demand consumption but fall below
+the six-viewer consumption rate, before allocating any capacity to repair.
+This arithmetic provides context for comparing low and high demand and
+for the severe completion loss under OFF, where repair causes no additional
+traffic.
+
+These are nominal sustained rates, not predictions of completion or stall.
+Viewers can prefetch before the fault and consume buffered media afterward;
+the video is finite, arrivals need not overlap throughout playback, and
+token buckets permit short bursts. Conversely, a segment can only be read
+from its actual holders, so spare capacity elsewhere is not automatically
+usable. Source selection, failed requests, and the eight-second attempt
+timeout affect how the remaining bandwidth is used. The healthy cluster's
+aggregate capacity also does not guarantee stall-free playback, as the
+high-demand N result illustrates. The repair policies adjust competition
+within this constrained system rather than adding upload capacity.
+
 \paragraph{Comparison design.}
 Within each workload and arrival pattern, 
 policies use the same content, initial replica placement, round-robin source selection, and fault schedule.
@@ -104,4 +127,24 @@ observation horizon. One run with inconsistent timing and incomplete
 records was retained but marked measurement-invalid and replaced using
 the same configuration and binaries. This was a measurement exclusion,
 not removal of an unsuccessful playback outcome.
+
+\paragraph{Timing precision and incomplete outcomes.}
+Recovery time is a first-verification timestamp. The archive also records
+the preceding observation, providing an observation bracket rather than
+the exact instant at which the replacement became ready. Checks are
+scheduled approximately two seconds apart, and their requests take time,
+so the actual spacing can exceed the nominal cadence. Decimal timestamps
+preserve the recorded observations but do not imply subsecond resolution
+of the underlying recovery event. Comparisons near one sampling interval
+require particular caution. A run without verified recovery before the
+horizon remains censored; it is not assigned zero recovery time.
+
+The analysis also distinguishes one-copy, zero-copy, and unknown-copy
+intervals. An unavailable verification response is unknown rather than
+evidence that the stored bytes were destroyed. One-copy exposure measures
+time spent with one verified copy and is not an estimated probability of
+data loss. Likewise, startup delay below is summarized over completed
+sessions, matching the archived startup statistic, whereas post-fault stall
+uses all scheduled viewers. Completion counts accompany the startup result
+because its conditional mean cannot describe viewers that fail to finish.
 
