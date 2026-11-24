@@ -25,6 +25,9 @@ def source_files():
 
 def purpose(path):
     relative = path.relative_to(ROOT).as_posix()
+    # The public README uses its title as its purpose instead of an owner TODO.
+    if relative == "README.md":
+        return path.read_text(encoding="utf-8").splitlines()[0].lstrip("# ")
     if relative in VENDORED_PURPOSES:
         return VENDORED_PURPOSES[relative]
     if path.name == "go.sum":

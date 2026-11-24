@@ -12,7 +12,7 @@ TODO(Haoyu)：新增文件后运行 python3 scripts/check_scaffold.py --write-in
 | [.github/workflows/ci.yml](.github/workflows/ci.yml) | # TODO(Haoyu): Maintain repository-root build and verification checks. |
 | [.gitignore](.gitignore) | # TODO(Haoyu): Keep generated data, local dependencies, binaries and credentials out of version control. |
 | [Makefile](Makefile) | # TODO(Haoyu): Maintain these shared entry points; commands run from the repository root. |
-| [README.md](README.md) | TODO(Haoyu): Maintain the project entry point, build conventions, and feature status. Each owner should update the relevant documentation when completing a task. |
+| [README.md](README.md) | Cooperative Video |
 | [cmd/client/main.go](cmd/client/main.go) | // TODO(Tian): Extend CLI configuration alongside the shared Go engine; never implement a separate CLI scheduler. |
 | [cmd/controller/main.go](cmd/controller/main.go) | // TODO(Haoyu): Keep controller startup/configuration here; protocol, FSM and policy logic belong in internal packages. |
 | [cmd/demo-api/main.go](cmd/demo-api/main.go) | // TODO(Tian): Extend demo routes with live Peer/buffer snapshots; the UI never bypasses the shared engine. |
