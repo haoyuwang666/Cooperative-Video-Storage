@@ -11,9 +11,8 @@ TODO(Haoyu)：新增文件后运行 python3 scripts/check_scaffold.py --write-in
 | [.gitattributes](.gitattributes) | # TODO(Yuquan): Keep executable Linux scripts portable across Windows checkouts. |
 | [.github/workflows/ci.yml](.github/workflows/ci.yml) | # TODO(Haoyu): Maintain repository-root build and verification checks. |
 | [.gitignore](.gitignore) | # TODO(Haoyu): Keep generated data, local dependencies, binaries and credentials out of version control. |
-| [.vscode/settings.json](.vscode/settings.json) | // TODO(team): Keep LaTeX Workshop outputs consistent with the Beamer Makefile. |
 | [Makefile](Makefile) | # TODO(Haoyu): Maintain these shared entry points; commands run from the repository root. |
-| [README.md](README.md) | TODO(Haoyu)：维护项目入口、构建约定和功能状态；每个负责人完成任务时同步相关文档。 |
+| [README.md](README.md) | TODO(Haoyu): Maintain the project entry point, build conventions, and feature status. Each owner should update the relevant documentation when completing a task. |
 | [cmd/client/main.go](cmd/client/main.go) | // TODO(Tian): Extend CLI configuration alongside the shared Go engine; never implement a separate CLI scheduler. |
 | [cmd/controller/main.go](cmd/controller/main.go) | // TODO(Haoyu): Keep controller startup/configuration here; protocol, FSM and policy logic belong in internal packages. |
 | [cmd/demo-api/main.go](cmd/demo-api/main.go) | // TODO(Tian): Extend demo routes with live Peer/buffer snapshots; the UI never bypasses the shared engine. |
@@ -38,6 +37,8 @@ TODO(Haoyu)：新增文件后运行 python3 scripts/check_scaffold.py --write-in
 | [docs/final-report/README.md](docs/final-report/README.md) | TODO(team): Complete and review the eight-page English report according to PLAN.md before submission. |
 | [docs/final-report/assets/README.md](docs/final-report/assets/README.md) | TODO(team): Add evaluation figures with source data, generation commands, and units documented. |
 | [docs/final-report/assets/architecture.tex](docs/final-report/assets/architecture.tex) | % TODO(team): Keep the architecture diagram aligned with implemented control and data paths. |
+| [docs/final-report/assets/generate-startup-table.py](docs/final-report/assets/generate-startup-table.py) | """TODO(team): Rebuild the E1 startup table from archived sessions; no experiments run.""" |
+| [docs/final-report/assets/startup-table.tex](docs/final-report/assets/startup-table.tex) | % TODO(team): Present E1 startup delays computed from archived sessions. |
 | [docs/final-report/final-report.tex](docs/final-report/final-report.tex) | % TODO(team): Maintain the USENIX report entry point and section order. |
 | [docs/final-report/references.bib](docs/final-report/references.bib) | % TODO(team): Maintain verified bibliographic metadata and source-to-claim notes as the report evolves. |
 | [docs/final-report/sections/00-abstract.tex](docs/final-report/sections/00-abstract.tex) | % TODO(team): Keep abstract claims aligned with the reported experiments. |
